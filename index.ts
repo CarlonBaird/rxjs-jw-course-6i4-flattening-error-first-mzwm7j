@@ -6,7 +6,7 @@ const endpointInput: HTMLInputElement =
   document.querySelector('input#endpoint');
 const fetchButton = document.querySelector('button#fetch');
 
-//Search: not-existing-endpoint
+//Search for any of the following: food, not-existing-endpoint
 fromEvent(fetchButton, 'click')
   .pipe(
     map(() => endpointInput.value),
