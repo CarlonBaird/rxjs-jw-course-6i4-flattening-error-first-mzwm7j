@@ -13,9 +13,10 @@ fromEvent(fetchButton, 'click')
     concatMap((value) =>
       ajax(`https://random-data-api.com/api/${value}/random_${value}`)
     ),
-    catchError(() => EMPTY) //this emits a complete notification so that the subscription will not end if an error occurs.
+    catchError(() => EMPTY) //this emits a complete notification so that the subscription will not end if an error occurs. Unfortunately, this approach will not work as the outer subscription will complete after an error.
   )
   .subscribe({
     next: (value) => console.log(value),
     error: (err) => console.log('Error:', err),
+    complete: () => console.log('Completed'),
   });
